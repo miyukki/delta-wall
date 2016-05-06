@@ -1,0 +1,91 @@
+.title {
+  position: relative;
+  padding: 10px;
+  color: white;
+  background: #1976d2;
+  font-size: 32px;
+  font-weight: bold; }
+  .title::before, .title::after {
+    position: absolute;
+    content: ' ';
+    border-style: solid; }
+  .title::before {
+    bottom: -10px;
+    right: 0;
+    width: 100%;
+    border-width: 10px 0 10px 0;
+    border-color: #29b6f6 transparent transparent transparent; }
+  .title::after {
+    top: -10px;
+    left: 0;
+    width: 100%;
+    border-width: 10px 0 10px 0;
+    border-color: transparent transparent #29b6f6 transparent; }
+
+.clock {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center;
+  color: #555; }
+
+.hint {
+  margin-left: 30px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #d11; }
+
+.bus {
+  zoom: 1;
+  padding: 30px;
+  margin-top: -1px;
+  border-top: solid 1px #ffca28;
+  border-bottom: solid 1px #ffca28;
+  background-color: #ffecb3; }
+  .bus:before, .bus:after {
+    content: " ";
+    display: table; }
+  .bus:after {
+    clear: both; }
+  .bus.next {
+    margin-bottom: 30px;
+    background-color: #ffccbc;
+    border-top: solid 1px #ff7043;
+    border-bottom: solid 1px #ff7043; }
+  .bus .time {
+    float: left;
+    color: #555;
+    font-size: 38px;
+    font-weight: bold; }
+  .bus .icon {
+    float: left;
+    margin-top: 15px;
+    margin-left: 20px; }
+  .bus .description {
+    float: left;
+    color: #555;
+    margin-top: 10px;
+    margin-left: 20px; }
+  .bus .countdown {
+    float: right;
+    color: #555;
+    white-space: nowrap; }
+    .bus .countdown .hours, .bus .countdown .minutes, .bus .countdown .seconds {
+      margin-left: 3px;
+      margin-right: 3px;
+      font-size: 42px;
+      font-weight: bold;
+      color: #d11; }
+
+.sprite {
+  width: 30px;
+  height: 17px;
+  background: url("/img/sprite.png") 0 0 no-repeat;
+  background-size: 160px 100px; }
+  .sprite .night {
+    background-position: -90px 0; }
+  .sprite .twin {
+    background-position: -60px 0; }
+  .sprite .sasa {
+    background-position: -30px 0; }

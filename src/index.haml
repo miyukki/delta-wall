@@ -1,0 +1,39 @@
+!!!
+%html{ lang: 'ja', ng: { app: 'delta-wall' } }
+  %head
+    %meta{ charset: 'utf-8' }
+
+    %title delta-wall
+
+    %script{ type: 'text/javascript', src: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js' }
+    %script{ type: 'text/javascript', src: 'js/UltraDate.min.js' }
+    %script{ type: 'text/javascript', src: 'js/UltraDate.ja.min.js' }
+    %script{ type: 'text/javascript', src: 'js/app.js' }
+    %link{ type: 'text/css', rel: 'stylesheet', href: 'http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css' }
+    %link{ type: 'text/css', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Dosis:400,700,500,600' }
+    %link{ type: 'text/css', rel: 'stylesheet', href: 'css/app.css' }
+
+  %body
+    .title バス時刻表 - Bus Timetable [SFC to Shonandai Sta.]
+    .next-bus{ ng: { controller: 'busTimetableController' } }
+      .clock
+        {{ date | dateFormat }}
+      .timetable
+        .hint Next >>>
+        .bus{ ng: { repeat: '(index, bus) in timetable', if: 'nextBusIndex <= index && index < nextBusIndex + 5', class: '{ next: nextBusIndex == index }' } }
+          .time {{bus.h | numberFixedLen:2}}:{{bus.m | numberFixedLen:2}}
+          .icon
+            .sprite{ ng: { class: '{ twin: bus.type.indexOf("t") != -1, sasa: bus.type.indexOf("s") != -1, night: bus.type.indexOf("n") != -1 }' } }
+          .description
+            .note{ ng: { if: 'bus.type.indexOf("r") != -1' } } ロータリー発
+            .note{ ng: { if: 'bus.type.indexOf("s") != -1' } } 笹久保経由
+            .note{ ng: { if: 'bus.type.indexOf("t") != -1' } } ツインライナー
+            .note{ ng: { if: 'bus.type.indexOf("n") != -1' } } 深夜バス
+          .countdown
+            %span{ ng: { if: 'getAbsoluteTime(bus.h, bus.m)[0]' } }<>
+              %span.hours<> {{ getAbsoluteTime(bus.h, bus.m)[0] }}
+              時間
+            %span.minutes<> {{ getAbsoluteTime(bus.h, bus.m)[1] | numberFixedLen:2}}
+            分
+            %span.seconds<> {{ getAbsoluteTime(bus.h, bus.m)[2] | numberFixedLen:2}}
+            秒
