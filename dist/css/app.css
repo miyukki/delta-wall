@@ -83,9 +83,9 @@
   height: 17px;
   background: url("/img/sprite.png") 0 0 no-repeat;
   background-size: 160px 100px; }
-  .sprite .night {
+  .sprite.night {
     background-position: -90px 0; }
-  .sprite .twin {
+  .sprite.twin {
     background-position: -60px 0; }
-  .sprite .sasa {
+  .sprite.sasa {
     background-position: -30px 0; }
