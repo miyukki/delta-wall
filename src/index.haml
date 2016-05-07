@@ -21,7 +21,7 @@
       .timetable
         .hint Next >>>
         .bus{ ng: { repeat: '(index, bus) in timetable', if: 'nextBusIndex <= index && index < nextBusIndex + 5', class: '{ next: nextBusIndex == index }' } }
-          .time {{bus.h | numberFixedLen:2}}:{{bus.m | numberFixedLen:2}}
+          .time {{ bus.h | numberFixedLen:2 }}:{{ bus.m | numberFixedLen:2 }}
           .icon
             .sprite{ ng: { class: '{ twin: bus.type.indexOf("t") != -1, sasa: bus.type.indexOf("s") != -1, night: bus.type.indexOf("n") != -1 }' } }
           .description
@@ -33,7 +33,7 @@
             %span{ ng: { if: 'getAbsoluteTime(bus.h, bus.m)[0]' } }<>
               %span.hours<> {{ getAbsoluteTime(bus.h, bus.m)[0] }}
               時間
-            %span.minutes<> {{ getAbsoluteTime(bus.h, bus.m)[1] | numberFixedLen:2}}
+            %span.minutes<> {{ getAbsoluteTime(bus.h, bus.m)[1] | numberFixedLen:2 }}
             分
-            %span.seconds<> {{ getAbsoluteTime(bus.h, bus.m)[2] | numberFixedLen:2}}
+            %span.seconds<> {{ getAbsoluteTime(bus.h, bus.m)[2] | numberFixedLen:2 }}
             秒

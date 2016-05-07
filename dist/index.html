@@ -20,7 +20,7 @@
       <div class='timetable'>
         <div class='hint'>Next >>></div>
         <div class='bus' ng-class='{ next: nextBusIndex == index }' ng-if='nextBusIndex &lt;= index &amp;&amp; index &lt; nextBusIndex + 5' ng-repeat='(index, bus) in timetable'>
-          <div class='time'>{{bus.h | numberFixedLen:2}}:{{bus.m | numberFixedLen:2}}</div>
+          <div class='time'>{{ bus.h | numberFixedLen:2 }}:{{ bus.m | numberFixedLen:2 }}</div>
           <div class='icon'>
             <div class='sprite' ng-class='{ twin: bus.type.indexOf("t") != -1, sasa: bus.type.indexOf("s") != -1, night: bus.type.indexOf("n") != -1 }'></div>
           </div>
@@ -30,7 +30,7 @@
             <div class='note' ng-if='bus.type.indexOf("t") != -1'>ツインライナー</div>
             <div class='note' ng-if='bus.type.indexOf("n") != -1'>深夜バス</div>
           </div>
-          <div class='countdown'><span ng-if='getAbsoluteTime(bus.h, bus.m)[0]'><span class='hours'>{{ getAbsoluteTime(bus.h, bus.m)[0] }}</span>時間</span><span class='minutes'>{{ getAbsoluteTime(bus.h, bus.m)[1] | numberFixedLen:2}}</span>分<span class='seconds'>{{ getAbsoluteTime(bus.h, bus.m)[2] | numberFixedLen:2}}</span>秒
+          <div class='countdown'><span ng-if='getAbsoluteTime(bus.h, bus.m)[0]'><span class='hours'>{{ getAbsoluteTime(bus.h, bus.m)[0] }}</span>時間</span><span class='minutes'>{{ getAbsoluteTime(bus.h, bus.m)[1] | numberFixedLen:2 }}</span>分<span class='seconds'>{{ getAbsoluteTime(bus.h, bus.m)[2] | numberFixedLen:2 }}</span>秒
           </div>
         </div>
       </div>

@@ -21,9 +21,12 @@ app.controller('busTimetableController', ['$scope', '$http', '$interval', ($scop
       return index if new Date().getTime() < date.getTime()
 
   $scope.getAbsoluteTime = (h, m) ->
-    lastMinutes = (h * 60 + m) - (new Date().getHours() * 60 + new Date().getMinutes())
-    lastSeconds = 60 - new Date().getSeconds()
-    [Math.floor(lastMinutes / 60), lastMinutes % 60 - 1, lastSeconds]
+    date = new Date()
+    date.setHours(h)
+    date.setMinutes(m)
+    date.setSeconds(0)
+    lastSeconds = Math.floor((date.getTime() - new Date().getTime()) / 1000)
+    [Math.floor(lastSeconds / 3600), Math.floor(lastSeconds % 3600 / 60), lastSeconds % 60]
 
   $http.jsonp('http://hack.sfc.keioac.jp/sfcbusapi/index.php?callback=JSON_CALLBACK').success((response) ->
     $scope.response = response

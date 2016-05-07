@@ -44,10 +44,13 @@
         }
       };
       $scope.getAbsoluteTime = function(h, m) {
-        var lastMinutes, lastSeconds;
-        lastMinutes = (h * 60 + m) - (new Date().getHours() * 60 + new Date().getMinutes());
-        lastSeconds = 60 - new Date().getSeconds();
-        return [Math.floor(lastMinutes / 60), lastMinutes % 60 - 1, lastSeconds];
+        var date, lastSeconds;
+        date = new Date();
+        date.setHours(h);
+        date.setMinutes(m);
+        date.setSeconds(0);
+        lastSeconds = Math.floor((date.getTime() - new Date().getTime()) / 1000);
+        return [Math.floor(lastSeconds / 3600), Math.floor(lastSeconds % 3600 / 60), lastSeconds % 60];
       };
       $http.jsonp('http://hack.sfc.keioac.jp/sfcbusapi/index.php?callback=JSON_CALLBACK').success(function(response) {
         return $scope.response = response;
